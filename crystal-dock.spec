@@ -1,3 +1,5 @@
+# Needed or failed with crystal-dock-2.1-build/crystal-dock-2.1/src/utils/font_utils.h:55:17: 
+# error: 'QFontDatabase' is deprecated: Call the static functions instead [-Werror,-Wdeprecated-declarations]
 %global optflags %{optflags} -Wno-deprecated-declarations
 
 Name:		crystal-dock
