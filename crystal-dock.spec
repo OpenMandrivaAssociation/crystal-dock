@@ -1,3 +1,5 @@
+%global optflags %{optflags} -Wno-deprecated-declarations
+
 Name:		crystal-dock
 Version:	2.1
 Release:	1
