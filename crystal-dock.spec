@@ -41,7 +41,7 @@ cd src
         -DBUILD_SHARED_LIBS:BOOL=OFF \
         -DBUILD_STATIC_LIBS:BOOL=ON
 
-%make_builc
+%make_build
 
 %install
 %make_install -C src/build
