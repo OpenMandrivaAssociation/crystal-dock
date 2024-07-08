@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	stdc++-static-devel
+BuildRequires:  qt6-qtbase-theme-gtk3
 
 %description
 Crystal Dock is a cool dock (desktop panel) for Linux desktop, with the focus on attractive user interface, 
