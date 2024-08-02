@@ -3,7 +3,7 @@
 %global optflags %{optflags} -Wno-deprecated-declarations
 
 Name:		crystal-dock
-Version:	2.1
+Version:	2.2
 Release:	1
 Summary:	Mac-like dock for Wayland
 Group:		System/Configuration/Other
