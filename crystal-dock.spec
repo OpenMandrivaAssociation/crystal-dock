@@ -1,56 +1,41 @@
-# Needed or failed with crystal-dock-2.1-build/crystal-dock-2.1/src/utils/font_utils.h:55:17: 
-# error: 'QFontDatabase' is deprecated: Call the static functions instead [-Werror,-Wdeprecated-declarations]
-%global optflags %{optflags} -Wno-deprecated-declarations
+%define kf6_version 6.2
+%define qt6_version 6.6
+%define plasma_version 6.0
 
 Name:		crystal-dock
-Version:	2.7
+Version:	2.8
 Release:	1
 Summary:	Mac-like dock for Wayland
 Group:		System/Configuration/Other
-License:	GPLv2
+License:	GPLv3
 URL:		https://github.com/dangvd/crystal-dock
 Source0:	https://github.com/dangvd/crystal-dock/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(Qt6)
-BuildRequires:	cmake(Qt6Core)
-BuildRequires:	cmake(Qt6DBus)
-BuildRequires:	cmake(Qt6Gui)
-BuildRequires:	cmake(Qt6WaylandClient)
-BuildRequires:	cmake(Qt6Widgets)
-BuildRequires:	cmake(Qt6Test)
-BuildRequires:	cmake(Qt6Quick)
-BuildRequires:	cmake(LayerShellQt) >= 6.1.2
-BuildRequires:	cmake(WaylandProtocols)
-BuildRequires:	cmake(PlasmaWaylandProtocols)
-BuildRequires:	pkgconfig(wayland-client)
-BuildRequires:	pkgconfig(wayland-protocols)
-BuildRequires:	pkgconfig(xkbcommon)
-BuildRequires:	stdc++-static-devel
+BuildRequires:	cmake(ECM) >= %{kf6_version}
+BuildRequires:	cmake(Qt6) >= %{qt6_version}
+BuildRequires:	cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:	cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:	cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:	cmake(Qt6WaylandClient) >= %{qt6_version}
+BuildRequires:	cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:	cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:	cmake(LayerShellQt) >= %{plasma_version}
+BuildRequires:	pkgconfig(wayland-client) >= 1.22
+BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
+BuildRequires:  stdc++-static-devel
 BuildRequires:  qt6-qtbase-theme-gtk3
+Requires:       qt6-qttools-dbus
+BuildSystem:    cmake
+BuildOption:    -S ../src
 
 %description
-Crystal Dock is a cool dock (desktop panel) for Linux desktop, with the focus on attractive user interface, 
-being simple and easy to use and customize, and cross-desktop support.
-
-The current version (version 2) supports KDE Plasma 6 on Wayland. Other desktop environments will be considered when they run on Wayland and provide sufficient APIs. 
-The previous version (version 1) supports KDE Plasma 5, GNOME, LXQt, Cinnamon and MATE on X11.
-
-
-%prep
-%autosetup -p1
-
-%build
-cd src
-%cmake \
-        -DBUILD_SHARED_LIBS:BOOL=OFF \
-        -DBUILD_STATIC_LIBS:BOOL=ON
-
-%make_build
-
-%install
-%make_install -C src/build
+Crystal Dock is a cool dock (desktop panel) for Linux desktop,
+with the focus on attractive user interface, being simple and easy to use,
+and cross-desktop support.
+Currently supports KDE Plasma 6 and LXQt 2.1 on Wayland.
 
 %files
+%license LICENSE
+%doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
