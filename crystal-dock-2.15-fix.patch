@@ -1,17 +1,20 @@
 diff -uraN crystal-dock-2.15/src/display/wlr_window_manager.cc omv-crystal-dock-2.15/src/display/wlr_window_manager.cc
 --- crystal-dock-2.15/src/display/wlr_window_manager.cc	2025-10-23 21:18:19.000000000 +0200
-+++ omv-crystal-dock-2.15/src/display/wlr_window_manager.cc	2025-10-25 20:54:21.153235246 +0200
-@@ -252,10 +252,10 @@
-   windows_[window]->minimized = false;
-   windows_[window]->maximized = false;
++++ omv-crystal-dock-2.15/src/display/wlr_window_manager.cc	2025-10-25 21:01:38.058215651 +0200
+@@ -254,13 +254,13 @@
    windows_[window]->fullscreen = false;
--  void *state_entry;
-+  uint32_t *state_entry;
+   void *state_entry;
    wl_array_for_each(state_entry, state) {
 -    auto* entry = static_cast<uint32_t*>(state_entry);
 -    if (*entry == ZWLR_FOREIGN_TOPLEVEL_HANDLE_V1_STATE_MAXIMIZED) {
-+    uint32_t entry = *state_entry;
++    uint32_t entry = *((uint32_t*)state_entry);
 +    if (entry == ZWLR_FOREIGN_TOPLEVEL_HANDLE_V1_STATE_MAXIMIZED) {
        if (!windows_[window]->minimized) {
          windows_[window]->maximized = true;
        }
+     }
+-    if (*entry == ZWLR_FOREIGN_TOPLEVEL_HANDLE_V1_STATE_MINIMIZED) {
++    if (entry == ZWLR_FOREIGN_TOPLEVEL_HANDLE_V1_STATE_MINIMIZED) {
+       windows_[window]->minimized = true;
+       windows_[window]->maximized = false;
+       windows_[window]->fullscreen = false;
