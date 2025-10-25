@@ -1,8 +1,6 @@
-diff --git a/src/display/wlr_window_manager.cc b/src/display/wlr_window_manager.cc
-index 0000000..0000000 100644
---- a/src/display/wlr_window_manager.cc
-+++ b/src/display/wlr_window_manager.cc
-@@ -247,8 +247,8 @@ void WlrWindowManager::state(
+--- src/display/wlr_window_manager.cc.orig
++++ src/display/wlr_window_manager.cc
+@@ -254,8 +254,8 @@ void WlrWindowManager::state(
    windows_[window]->minimized = false;
    windows_[window]->maximized = false;
    windows_[window]->fullscreen = false;
@@ -17,8 +15,6 @@ index 0000000..0000000 100644
        if (!windows_[window]->minimized) {
          windows_[window]->maximized = true;
        }
-@@ -256,7 +256,7 @@ void WlrWindowManager::state(
+@@ -263,7 +263,7 @@ void WlrWindowManager::state(
      if (*entry == ZWLR_FOREIGN_TOPLEVEL_HANDLE_V1_STATE_MINIMIZED) {
        windows_[window]->minimized = true;
-       windows_[window]->maximized = false;
-       windows_[window]->fullscreen = false;
