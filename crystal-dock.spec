@@ -10,6 +10,7 @@ Group:		System/Configuration/Other
 License:	GPLv3
 URL:		https://github.com/dangvd/crystal-dock
 Source0:	https://github.com/dangvd/crystal-dock/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
+Patch0:  crystal-dock-2.15-fix.patch
 
 BuildRequires:	cmake(ECM) >= %{kf6_version}
 BuildRequires:	cmake(Qt6) >= %{qt6_version}
