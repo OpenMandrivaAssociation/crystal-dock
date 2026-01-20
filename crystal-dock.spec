@@ -3,7 +3,7 @@
 %define plasma_version 6.0
 
 Name:		crystal-dock
-Version:	2.15
+Version:	2.16
 Release:	1
 Summary:	Mac-like dock for Wayland
 Group:		System/Configuration/Other
